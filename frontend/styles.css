@@ -93,3 +93,16 @@ body {
   user-select: none;
   z-index: 1;
 }
+
+a {
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+}
+
+#code {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 35px;
+  z-index: 1;
+}
