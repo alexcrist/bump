@@ -1,7 +1,6 @@
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
-import { initGame } from './game.js';
 
 const PORT = process.env.PORT || 3000;
 
@@ -13,7 +12,11 @@ app.get('/', (_, res) => res.send('hi'));
 
 app.use(express.static('../frontend'));
 
-initGame(io);
+io.on('connection', (socket) => {
+  socket.on('shot', (data) => {
+    socket.broadcast.emit('other player shot', data);
+  });
+});
 
 server.listen(PORT, () => {
   console.log('Express server running...');

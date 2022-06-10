@@ -6,7 +6,7 @@
   },
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
-    "prod": "node index.js"
+    "start": "nodemon backend/index.js",
+    "prod": "node backend/index.js"
   }
 }
