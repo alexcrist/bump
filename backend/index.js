@@ -10,7 +10,7 @@ const io = new Server(server);
 
 app.get('/', (_, res) => res.send('hi'));
 
-app.use(express.static('../frontend'));
+app.use(express.static('frontend'));
 
 io.on('connection', (socket) => {
   socket.on('shot', (data) => {
