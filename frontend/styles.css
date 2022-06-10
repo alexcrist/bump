@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+#shooting-area {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 400px;
+  background-color: #CBF173;
+}
+
+.ball {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+#back-board {
+  position: absolute;
+  width: 15px;
+  background-color: #C33C4D;
+  height: 100px;
+  left: 1000px;
+  top: 300px;
+}
+
+#rim-front {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 930px;
+  top: 385px;
+  background-color: #F25541;
+}
+
+#rim-back {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 985px;
+  top: 385px;
+  background-color: #F25541;
+}
+
+#rim-middle {
+  position: absolute;
+  width: 80px;
+  opacity: 0.2;
+  height: 15px;
+  left: 930px;
+  top: 385px;
+  background-color: #F25541;
+}
+
+#post {
+  position: absolute;
+  width: 15px;
+  opacity: 0.1;
+  height: 1000px;
+  left: 1000px;
+  top: 400px;
+  background-color: black;
+}
+
+#score {
+  position: absolute;
+  right: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 50px;
+  user-select: none;
+}
