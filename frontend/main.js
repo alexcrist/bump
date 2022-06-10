@@ -22,16 +22,14 @@ let lastMouseY = 0;
 let mouseDX = 0;
 let mouseDY = 0;
 
-$('body').on('mousemove', (event) => {
-  const { pageX, pageY } = event.originalEvent;
+const mousemove = (pageX, pageY) => {
   mouseDX = pageX - lastMouseX;
   mouseDY = pageY - lastMouseY;
   lastMouseX = pageX;
   lastMouseY = pageY;
-});
+};
 
-$('body').on('mouseup', (event) => {
-  const { pageX, pageY } = event.originalEvent;
+const mouseup = (pageX, pageY) => {
   if (pageX > 400) {
     return;
   }
@@ -50,6 +48,26 @@ $('body').on('mouseup', (event) => {
   };
   addBall(ball);
   socket.emit('shot', JSON.stringify(ball));
+};
+
+$('body').on('mousemove', (event) => {
+  const { pageX, pageY } = event.originalEvent;
+  mousemove(pageX, pageY);
+});
+
+$('body').on('mouseup', (event) => {
+  const { pageX, pageY } = event.originalEvent;
+  mouseup(pageX, pageY);
+});
+
+$('body').on('touchmove', (event) => {
+  const { pageX, pageY } = event.originalEvent.touches[0];
+  mousemove(pageX, pageY);
+});
+
+$('body').on('touchup', (event) => {
+  const { pageX, pageY } = event.originalEvent.touches[0];
+  mouseup(pageX, pageY);
 });
 
 let time = new Date();
@@ -59,6 +77,8 @@ const update = () => {
   const timeElapsed = new Date() - time;
   time = new Date();
   const speedMultiplier = timeElapsed / expectedTimeElapsed;
+
+  console.log(speedMultiplier);
 
   for (let i = 0; i < balls.length; i++) {
     balls[i].vectors.velocity.y += 0.3 * speedMultiplier;
