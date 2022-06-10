@@ -52,25 +52,32 @@ $('body').on('mouseup', (event) => {
   socket.emit('shot', JSON.stringify(ball));
 });
 
+let time = new Date();
+const expectedTimeElapsed = 25;
+
 const update = () => {
+  const timeElapsed = new Date() - time;
+  time = new Date();
+  const speedMultiplier = timeElapsed / expectedTimeElapsed;
+
   for (let i = 0; i < balls.length; i++) {
-    balls[i].vectors.velocity.y += 0.3;
-    balls[i].vectors.position.x += balls[i].vectors.velocity.x;
-    balls[i].vectors.position.y += balls[i].vectors.velocity.y;
+    balls[i].vectors.velocity.y += 0.3 * speedMultiplier;
+    balls[i].vectors.position.x += balls[i].vectors.velocity.x * speedMultiplier;
+    balls[i].vectors.position.y += balls[i].vectors.velocity.y * speedMultiplier;
     balls[i].element.css('left', balls[i].vectors.position.x + 'px');
     balls[i].element.css('top', balls[i].vectors.position.y + 'px');
   
     rectangleCollision(balls[i], 1000, 300, 15, 100);
     rectangleCollision(balls[i], 930, 385, 15, 15);
-    rectangleCollision(balls[i], 985, 385, 15, 15);
+    rectangleCollision(balls[i], 985, 385, 15, 15, false);
 
     if (
       !balls[i].hasScored &&
       balls[i].vectors.velocity.y > 0 &&
       balls[i].vectors.position.x - 10 >= 930 + 15 &&
       balls[i].vectors.position.x + 10 <= 985 &&
-      balls[i].vectors.position.y > 385 &&
-      balls[i].vectors.position.y < 385 + 15
+      balls[i].vectors.position.y - 10 > 385 &&
+      balls[i].vectors.position.y - 10 < 385 + 15
     ) {
       balls[i].hasScored = true;
       score.text(Number(score.text()) + 1);
