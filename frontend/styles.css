@@ -16,8 +16,11 @@ body {
   transform-origin: center left;
 }
 
-#shooting-area {
+#container > div {
   position: absolute;
+}
+
+#shooting-area {
   left: 0;
   top: 0;
   bottom: 0;
@@ -26,7 +29,6 @@ body {
 }
 
 .ball {
-  position: absolute;
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -35,7 +37,6 @@ body {
 }
 
 #back-board {
-  position: absolute;
   width: 15px;
   background-color: #C33C4D;
   height: 170px;
@@ -44,7 +45,6 @@ body {
 }
 
 #rim-front {
-  position: absolute;
   width: 15px;
   height: 15px;
   left: 900px;
@@ -53,7 +53,6 @@ body {
 }
 
 #rim-back {
-  position: absolute;
   width: 15px;
   height: 15px;
   left: 985px;
@@ -62,7 +61,6 @@ body {
 }
 
 #rim-middle {
-  position: absolute;
   width: 70px;
   opacity: 0.2;
   height: 15px;
@@ -72,7 +70,6 @@ body {
 }
 
 #post {
-  position: absolute;
   width: 15px;
   opacity: 0.1;
   height: 1000px;
@@ -81,25 +78,23 @@ body {
   background-color: black;
 }
 
-#score {
+.text {
   position: fixed;
-  top: 0;
-  right: 15px;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   font-size: 50px;
+}
+
+#score {
+  top: 0;
+  right: 15px;
   user-select: none;
 }
 
 #title {
-  position: fixed;
   top: 0;
   left: 15px;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
-  font-size: 50px;
   user-select: none;
-  z-index: 1;
 }
 
 a {
@@ -109,8 +104,5 @@ a {
 }
 
 #code {
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
   font-size: 35px;
-  z-index: 1;
 }
