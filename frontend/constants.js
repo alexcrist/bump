@@ -1,13 +1,11 @@
 const getCssNumber = (x, key) => {
-
-  console.log(x, key);
-  console.log(x.css(key));
   return Number(x.css(key).replace('px', ''));
 };
 
 const COLOR = getRandomColor();
 const BALL_DESPAWN_Y = 1000;
 const EXPECTED_CYCLE_MS = 25;
+const GRAVITY = 0.3;
 
 const BALL = $('.ball');
 const BALL_RADIUS = getCssNumber(BALL, 'width') / 2;

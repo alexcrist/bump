@@ -32,7 +32,7 @@ const createBall = (x, y, dX, dY, balls, container) => {
 const drawHoverBall = (x, y) => {
   if (x < SHOOTING_AREA_WIDTH) {
     hoverBall.css('opacity', 1);
-    hoverBall.css('color', COLOR);
+    hoverBall.css('background-color', COLOR);
     hoverBall.css('left', x);
     hoverBall.css('top', y);
     container.css('cursor', 'grabbing');
@@ -90,12 +90,12 @@ const update = () => {
     }
 
     // Handle collisions
-    rectangleCollision(balls[i], BACKBOARD_X, BACKBOARD_Y, BACKBOARD_WIDTH, BACKBOARD_HEIGHT);
-    rectangleCollision(balls[i], RIM_FRONT_X, RIM_FRONT_Y, RIM_FRONT_WIDTH, RIM_FRONT_HEIGHT);
-    rectangleCollision(balls[i], RIM_BACK_X, RIM_BACK_Y, RIM_BACK_WIDTH, RIM_BACK_HEIGHT);
+    handleRectangleCollision(balls[i], speedMultiplier, BACKBOARD_X, BACKBOARD_Y, BACKBOARD_WIDTH, BACKBOARD_HEIGHT);
+    handleRectangleCollision(balls[i], speedMultiplier, RIM_FRONT_X, RIM_FRONT_Y, RIM_FRONT_WIDTH, RIM_FRONT_HEIGHT);
+    handleRectangleCollision(balls[i], speedMultiplier, RIM_BACK_X, RIM_BACK_Y, RIM_BACK_WIDTH, RIM_BACK_HEIGHT);
 
     // Update ball position / velocity
-    balls[i].velocity.y += 0.3 * speedMultiplier;
+    balls[i].velocity.y += GRAVITY * speedMultiplier;
     balls[i].position.x += balls[i].velocity.x * speedMultiplier;
     balls[i].position.y += balls[i].velocity.y * speedMultiplier;
     balls[i].element.css('left', balls[i].position.x + 'px');
@@ -104,11 +104,7 @@ const update = () => {
     // Detect scores
     if (
       !balls[i].hasScored &&
-      balls[i].velocity.y > 0 &&
-      balls[i].position.x - 10 >= 930 + 15 &&
-      balls[i].position.x + 10 <= 985 &&
-      balls[i].position.y - 10 > 385 &&
-      balls[i].position.y - 10 < 385 + 15
+      isRectangleCollision(balls[i], RIM_MIDDLE_X + BALL_RADIUS, RIM_MIDDLE_Y + RIM_MIDDLE_HEIGHT - 1, RIM_MIDDLE_WIDTH - BALL_RADIUS * 2, 1)
     ) {
       balls[i].hasScored = true;
       score.text(Number(score.text()) + 1);
