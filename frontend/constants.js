@@ -1,6 +1,4 @@
-const getCssNumber = (x, key) => {
-  return Number(x.css(key).replace('px', ''));
-};
+const getCssNumber = (x, key) => Number(x.css(key).replace('px', ''));
 
 const COLOR = getRandomColor();
 const BALL_DESPAWN_Y = 1000;

@@ -6,7 +6,6 @@ const hoverBall = $('#hover-ball');
 
 // Scale to screen size ========================================================
 
-console.log(SCALE);
 if (SCALE < 1) {
   container.css({
     transform: `scale(${SCALE})`,
