@@ -58,10 +58,10 @@ body {
 
 #rim-middle {
   position: absolute;
-  width: 80px;
+  width: 40px;
   opacity: 0.2;
   height: 15px;
-  left: 930px;
+  left: 945px;
   top: 385px;
   background-color: #F25541;
 }
