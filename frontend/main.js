@@ -104,7 +104,8 @@ const update = () => {
     // Detect scores
     if (
       !balls[i].hasScored &&
-      isRectangleCollision(balls[i], RIM_MIDDLE_X + BALL_RADIUS, RIM_MIDDLE_Y + RIM_MIDDLE_HEIGHT - 1, RIM_MIDDLE_WIDTH - BALL_RADIUS * 2, 1)
+      balls[i].velocity.y > 0 &&
+      isRectangleCollision(balls[i], speedMultiplier, RIM_MIDDLE_X + BALL_RADIUS, RIM_MIDDLE_Y + RIM_MIDDLE_HEIGHT - 1, RIM_MIDDLE_WIDTH - BALL_RADIUS * 2, 1)
     ) {
       balls[i].hasScored = true;
       score.text(Number(score.text()) + 1);
