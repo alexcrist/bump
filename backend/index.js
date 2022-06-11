@@ -8,9 +8,8 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.get('/', (_, res) => res.send('hi'));
-
 app.use(express.static('frontend'));
+app.get('/', express.static('frontend/index.html'));
 
 io.on('connection', (socket) => {
   socket.on('shot', (data) => {
