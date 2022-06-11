@@ -4,6 +4,16 @@ const container = $('#container');
 const score = $('#score');
 const hoverBall = $('#hover-ball');
 
+// Scale to screen size ========================================================
+
+console.log(SCALE);
+if (SCALE < 1) {
+  container.css({
+    transform: `scale(${SCALE})`,
+    width: 100 / SCALE + 'vw'
+  });
+}
+
 // Game state ==================================================================
 
 const balls = [];
