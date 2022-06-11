@@ -120,6 +120,7 @@ const update = () => {
     if (
       !balls[i].hasScored &&
       balls[i].velocity.y > 0 &&
+      balls[i].color === COLOR &&
       isRectangleCollision(balls[i], speedMultiplier, RIM_MIDDLE_X + BALL_RADIUS, RIM_MIDDLE_Y + RIM_MIDDLE_HEIGHT - 1, RIM_MIDDLE_WIDTH - BALL_RADIUS * 2, 1)
     ) {
       balls[i].hasScored = true;
