@@ -3,7 +3,7 @@ const getCssNumber = (x, key) => Number(x.css(key).replace('px', ''));
 const COLOR = getRandomColor();
 const BALL_DESPAWN_Y = 1000;
 const EXPECTED_CYCLE_MS = 25;
-const GRAVITY = 0.45;
+const GRAVITY = 1;
 
 const BALL = $('.ball');
 const BALL_RADIUS = getCssNumber(BALL, 'width') / 2;
