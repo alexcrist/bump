@@ -35,7 +35,7 @@ const RIM_BACK_Y = getCssNumber(RIM_BACK, 'top');
 const RIM_BACK_WIDTH = getCssNumber(RIM_BACK, 'width');
 const RIM_BACK_HEIGHT = getCssNumber(RIM_BACK, 'height');
 
-const GAME_WIDTH = BACKBOARD_X + BACKBOARD_WIDTH + 30;
 const CONTAINER = $('#container');
 const CONTAINER_WIDTH = getCssNumber(CONTAINER, 'width');
+const GAME_WIDTH = BACKBOARD_X + BACKBOARD_WIDTH + 30;
 const SCALE = CONTAINER_WIDTH / GAME_WIDTH;

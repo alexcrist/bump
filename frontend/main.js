@@ -1,5 +1,6 @@
 // DOM Elements ================================================================
 
+const body = $('body');
 const container = $('#container');
 const score = $('#score');
 const hoverBall = $('#hover-ball');
@@ -52,6 +53,11 @@ const drawHoverBall = (x, y) => {
 };
 
 const onMouseMove = (pageX, pageY) => {
+  if (SCALE < 1) {
+    pageX /= SCALE;
+    pageY -= (body.height() - body.height() * SCALE) / 2;
+    pageY /= SCALE;
+  }
   drawHoverBall(pageX, pageY);
   if (lastMouseX <= SHOOTING_AREA_WIDTH && pageX > SHOOTING_AREA_WIDTH) {
     const mouseDX = pageX - lastMouseX;
